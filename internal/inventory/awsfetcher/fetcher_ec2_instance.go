@@ -213,6 +213,9 @@ func (e *ec2InstanceFetcher) buildAttributes(i *ec2.Ec2Instance, tags map[string
 	if v := awslib.LookupTag(tags, "costcenter", "cost-center", "cost_center"); v != "" {
 		attrs["CostCenter"] = v
 	}
+	if v := awslib.LookupTag(tags, "role"); v != "" {
+		attrs["Role"] = v
+	}
 	return attrs
 }
 

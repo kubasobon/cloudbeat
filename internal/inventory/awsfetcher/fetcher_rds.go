@@ -79,6 +79,9 @@ func (s *rdsFetcher) Fetch(ctx context.Context, assetChannel chan<- inventory.As
 		if item.EngineVersion != "" {
 			attrs["EngineVersion"] = item.EngineVersion
 		}
+		if item.Status != "" {
+			attrs["DBInstanceStatus"] = item.Status
+		}
 
 		assetChannel <- inventory.NewAssetEvent(
 			inventory.AssetClassificationAwsRds,
